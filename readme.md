@@ -4,7 +4,7 @@
 #### Clonar Repositório
 ```bash
 git clone https://github.com/vinilima2/vet-cloud-back.git
-cd bootcamp-ia-moderacao
+cd vet-cloud-back
 ```
 
 #### Inicializar Venv
