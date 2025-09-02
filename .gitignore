@@ -3,3 +3,4 @@
 
 # PYTHON
 .venv/*
+__pycache__
