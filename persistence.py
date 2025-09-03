@@ -58,7 +58,7 @@ class FireStoreDB:
     
     def update_document(self, document, fields_and_values: dict): # recebe um objeto DocumentoSnapshot e atualiza seus campos com novos valores (JSON)
         try:
-            document.reference.update(fields_and_values)
+            document.update(fields_and_values)
         except:
             return False
         finally: 

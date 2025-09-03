@@ -30,8 +30,8 @@ def get_document_by_firestore_id():
     collection,document_id = request.get_json().values()
     return jsonify(database.get_document_by_firestore_id(collection, document_id))
 
-@app.route("/collection/document/id/edit", methods=["PUT"]) # teste
+@app.route("/collection/document/id_firestore/edit", methods=["PUT"]) # teste
 def update_document():
-    collection,old,new= request.get_json().values()
-    document = database.get_document_by_id(collection, old["id_field"], old["id_value"], raw = True)
+    collection,id,new= request.get_json().values()
+    document = database.get_document_by_firestore_id(collection, id, raw = True)
     return "Updated" if database.update_document(document, new) else "Failed to update"
