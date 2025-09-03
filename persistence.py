@@ -31,13 +31,13 @@ class FireStoreDB:
     def get_document_by_value(self, collection, field: str, value, raw = False): # retorna documento(s) a partir de um valor de determinado campo; em dict ou em DocumentSnapshot
         target = self.db.collection(collection) if collection.__class__.__name__ == "str" else collection
         if raw:
-            return target.where(field, "==", value).get()
+            return target.where(field, "==", value)
         response = []
         for doc in target.where(field, "==", value).get():
             response.append(doc.to_dict())
         return response
     
-    def get_document_by_id(self, collection, document_id, raw = False):
+    def get_document_by_id(self, collection, document_id, raw = False): # retorna um documento pelo seu ID interno do FireStore (ex: NIUncqzgDzZRGh2Y2eCN); em dict ou DocumentSnapshot
         target = (self.db.collection(collection) if collection.__class__.__name__ == "str" else collection).document(document_id)
         if raw:
             return target
