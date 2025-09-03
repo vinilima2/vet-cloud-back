@@ -12,8 +12,8 @@ def get_collection():
 
 @app.route("/collection/add", methods=["POST"]) # teste
 def add_to_collection():
-    collection,document = request.get_json().values()
-    return "Added" if database.insert_into_collection(collection, document) else "Failed to add"
+    collection,id,document = request.get_json().values()
+    return "Added" if database.insert_into_collection(collection, document, default_id=False, manual_id=id) else "Failed to add"
 
 @app.route("/collection/document", methods=["POST"]) # teste
 def get_document_by_value():

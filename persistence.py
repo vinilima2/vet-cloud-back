@@ -43,10 +43,14 @@ class FireStoreDB:
             return target
         return target.get().to_dict()    
     
-    def insert_into_collection(self, collection, document: dict): # insere um documento (JSON) em uma determinada collection
+    def insert_into_collection(self, collection, document: dict, default_id = True, manual_id = "-1"): # insere um documento (JSON) em uma determinada collection
         try:
             target = self.db.collection(collection) if collection.__class__.__name__ == "str" else collection
-            target.add(document)
+            if default_id: # FireStore cria a primary_key automaticamente
+                target.add(document)
+            else: # primary_key manual
+                ref = target.document(manual_id)
+                ref.set(document)
         except:
             return False
         finally:
