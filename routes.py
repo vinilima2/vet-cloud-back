@@ -22,5 +22,16 @@ def get_document_by_value():
 
 @app.route("/collection/document/id", methods=["POST"]) # teste
 def get_document_by_id():
+    collection,id_field,id_value= request.get_json().values()
+    return jsonify(database.get_document_by_id(collection,id_field,id_value))
+
+@app.route("/collection/document/id_firestore", methods=["POST"]) # teste
+def get_document_by_firestore_id():
     collection,document_id = request.get_json().values()
-    return jsonify(database.get_document_by_id(collection, document_id))
+    return jsonify(database.get_document_by_firestore_id(collection, document_id))
+
+@app.route("/collection/document/id/edit", methods=["PUT"]) # teste
+def update_document():
+    collection,old,new= request.get_json().values()
+    document = database.get_document_by_id(collection, old["id_field"], old["id_value"], raw = True)
+    return "Updated" if database.update_document(document, new) else "Failed to update"
