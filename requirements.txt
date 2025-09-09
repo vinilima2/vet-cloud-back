@@ -1,5 +1,3 @@
 Flask==3.1.2
 Python_Dotenv==1.1.0
 Firebase_Admin==7.1.0
-Flask-Mail
-Python_Dotenv
