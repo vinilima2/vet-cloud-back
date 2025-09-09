@@ -1,0 +1,5 @@
+{
+  "destinatario": "diegokenjiyoshida2508@gmail.com",
+  "assunto": "TESTE",
+  "corpo": "Testando o funcionamento do envio de emails usando Flask"
+}

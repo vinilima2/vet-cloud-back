@@ -4,3 +4,7 @@
 # PYTHON
 .venv/*
 __pycache__
+
+.env
+
+venv
